@@ -11,6 +11,30 @@ au BufWrite /private/tmp/crontab.* set nowritebackup
 " Don't write backup file if vim is being called by "chpass"
 au BufWrite /private/etc/pw.* set nowritebackup
 
+" 行番号表示
+set nocompatible
+set number
+
+" カラー
 colorscheme jellybeans
 syntax on
+
+" スワップファイルを作成しない
+:set noswapfile
+
+" viminfoファイルを作成しない
+:set viminfo=
+
+" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す
+imap {} {}<Left>
+imap [] []<Left>
+imap () ()<Left>
+imap “” “”<Left>
+imap ” ”<Left>
+imap <> <><Left>
+imap “ “<Left>
+
+" 不可視文字を表示
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 

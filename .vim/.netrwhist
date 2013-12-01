@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/onodera/.dropbox'
 let g:netrw_dirhist_2='/Users/onodera/.vim'
 let g:netrw_dirhist_3='/Users/onodera/.log.io'
 let g:netrw_dirhist_4='/Users/onodera/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/nokogiri-1.6.0/lib/nokogiri'
 let g:netrw_dirhist_5='/Users/onodera/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/nokogiri-1.6.0/lib/nokogiri/html'
 let g:netrw_dirhist_6='/Users/onodera/.vim'
+let g:netrw_dirhist_7='/Users/onodera/.ssh'
