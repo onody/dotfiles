@@ -38,3 +38,6 @@ imap “ “<Left>
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
+" 検索結果をハイライト
+set hlsearch
+
