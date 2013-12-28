@@ -16,7 +16,7 @@ set nocompatible
 set number
 
 " カラー
-colorscheme jellybeans
+colorscheme default
 syntax on
 
 " スワップファイルを作成しない
@@ -40,4 +40,14 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " 検索結果をハイライト
 set hlsearch
+
+" tab幅調整
+set tabstop=4
+
+" open,close
+:set foldmethod=marker
+
+" マウス操作
+set mouse=a
+set ttymouse=xterm2
 
