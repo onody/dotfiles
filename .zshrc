@@ -7,7 +7,7 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
 alias ps="ps --sort=start_time"
-
+alias rmr="rm -rf"
 
 # history	-------------------
 
