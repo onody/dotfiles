@@ -8,6 +8,8 @@ alias cp="cp -i"
 alias rm="rm -i"
 alias ps="ps --sort=start_time"
 alias rmr="rm -rf"
+alias cl="clear"
+alias tl="tail -f"
 
 # history	-------------------
 
