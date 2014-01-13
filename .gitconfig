@@ -1,0 +1,12 @@
+[user]
+  name = Kohei Onodera
+  email = onodera212@gmail.com
+[color]
+  # colorの設定(以下のコマンドは自動で色つける)
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+
+

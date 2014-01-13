@@ -1,5 +1,25 @@
 
-.vim/.netrwhist
-.vim/.vim
+*.o
+\#*#
+*#
+.#*
+.*~
+*~
 .DS_Store
+*.sw[po]
+tags
+TAGS
+Session.vim
+.svn
+*.dSYM
+*.log
+*.dvi
+*.aux
+*.elc
+.zshrc.local
+samples
+
+.vim/bundle/
+.vim/.netrwhist
+.vimrc_sample
 
