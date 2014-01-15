@@ -11,6 +11,7 @@ alias rmr="rm -rf"
 alias cl="clear"
 alias tl="tail -f"
 
+
 # history	-------------------
 
 # 履歴ファイルの保存先
