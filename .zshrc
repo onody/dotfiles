@@ -1,5 +1,8 @@
 
 
+autoload -U compinit
+compinit
+
 # alias		-------------------
 
 alias ls="ls -la"
