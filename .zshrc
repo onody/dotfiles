@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="af-magic"
+ZSH_THEME="amuse"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -67,4 +67,10 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# 
+source ./.zshrc.custom
+source ./.zshrc.alias
+
+
 
