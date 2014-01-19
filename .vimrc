@@ -12,9 +12,6 @@ Bundle 'gmarik/vundle'
 " My bundles here:
 "
 " original repos on GitHub
-Bundle 'vim-ruby/vim-ruby'
-"Bundle 'css.vim'
-Bundle 'php.vim'
 
 " vim-scripts repos
 
