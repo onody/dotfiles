@@ -1,53 +1,34 @@
-" Configuration file for vim
-set modelines=0		" CVE-2007-2438
 
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
-set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-set backspace=2		" more powerful backspacing
+set nocompatible              " be iMproved
+filetype off                  " required!
 
-" Don't write backup file if vim is being called by "crontab -e"
-au BufWrite /private/tmp/crontab.* set nowritebackup
-" Don't write backup file if vim is being called by "chpass"
-au BufWrite /private/etc/pw.* set nowritebackup
+set rtp+=~/.vim/vundle/
+call vundle#rc()
 
-" 行番号表示
-set nocompatible
-set number
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
 
-" カラー
-colorscheme default
-syntax on
+" My bundles here:
+"
+" original repos on GitHub
 
-" スワップファイルを作成しない
-:set noswapfile
+" vim-scripts repos
 
-" viminfoファイルを作成しない
-:set viminfo=
+" non-GitHub repos
+Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 
-" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap “” “”<Left>
-imap ” ”<Left>
-imap <> <><Left>
-imap “ “<Left>
+" Git repos on your local machine (i.e. when working on your own plugin)
 
-" 不可視文字を表示
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
-" 検索結果をハイライト
-set hlsearch
+filetype plugin indent on     " required!
 
-" tab幅調整
-set tabstop=4
 
-" open,close
-:set foldmethod=marker
+" Settings
 
-" マウス操作
-set mouse=a
-set ttymouse=xterm2
+" Color
+syntax enable
+set background=dark
+colorscheme solarized
+
 
