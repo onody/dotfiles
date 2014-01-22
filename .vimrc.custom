@@ -19,8 +19,8 @@ imap <> <><Left>
 imap “ “<Left>
 
 " 不可視文字を表示
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+"set list
+"set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " 検索結果をハイライト
 set hlsearch
