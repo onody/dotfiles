@@ -9,6 +9,7 @@ alias ps="ps --sort=start_time"
 alias rmr="rm -rf"
 alias cl="clear"
 alias tl="tail -f"
+alias du="du -sh ./*"
 
 
 
