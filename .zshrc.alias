@@ -2,6 +2,7 @@
 # alias		-------------------
 
 alias ls="ls -la"
+alias lsd="ls -lat"
 alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
@@ -10,6 +11,6 @@ alias rmr="rm -rf"
 alias cl="clear"
 alias tl="tail -f"
 alias du="du -sh ./*"
-
+alias javac="javac -J-Dfile.encoding=UTF-8"
 
 
