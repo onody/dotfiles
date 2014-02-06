@@ -70,8 +70,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # 
-source ./.zshrc.custom
-source ./.zshrc.alias
+source $HOME/.zshrc.custom
+source $HOME/.zshrc.alias
 
 
 
