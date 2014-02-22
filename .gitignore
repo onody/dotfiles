@@ -19,7 +19,7 @@ Session.vim
 .zshrc.local
 samples
 
-.vim/bundle/
+.oh-my-zsh
 .vim/.netrwhist
 .vimrc_sample
 

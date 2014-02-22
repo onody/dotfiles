@@ -1,40 +1,27 @@
 
-set nocompatible              " be iMproved
-filetype off                  " required!
+" NeoBundle
+if has('vim_starting')
+	set nocompatible
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-" My bundles here:
-"
-" original repos on GitHub
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 
-" vim-scripts repos
-
-" non-GitHub repos
-Bundle 'https://github.com/altercation/vim-colors-solarized.git'
-Bundle 'https://github.com/kana/vim-fakeclip.git'
-
-" Git repos on your local machine (i.e. when working on your own plugin)
+filetype plugin indent on
+NeoBundleCheck
 
 
-filetype plugin indent on     " required!
 
-
-" Settings
-
-" Color
+" Solarized
 syntax enable
 set background=dark
 colorscheme solarized
 
-" Custom
-if filereadable(expand('~/.vimrc.custom'))
-	source ~/.vimrc.custom
-endif
-
+" lightline
+set laststatus=2
 
