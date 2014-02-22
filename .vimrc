@@ -16,6 +16,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'Shougo/neocomplcache.vim'
 
 filetype plugin indent on
 NeoBundleCheck
@@ -32,6 +33,10 @@ let g:lightline = {
       \ 'colorscheme': 'solarized'
       \ }
 
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 3
 
 
 

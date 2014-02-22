@@ -1,3 +1,4 @@
 lightline.vim
 neobundle.vim
+neocomplcache.vim
 vim-colors-solarized
