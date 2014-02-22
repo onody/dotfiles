@@ -1,4 +1,9 @@
 
+" Include
+if filereadable(expand('~/src/dotfiles/.vimrc.custom'))
+	source ~/src/dotfiles/.vimrc.custom
+endif
+
 " NeoBundle
 if has('vim_starting')
 	set nocompatible
@@ -16,7 +21,6 @@ filetype plugin indent on
 NeoBundleCheck
 
 
-
 " Solarized
 syntax enable
 set background=dark
@@ -27,5 +31,7 @@ set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'solarized'
       \ }
+
+
 
 
