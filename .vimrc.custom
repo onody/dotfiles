@@ -39,4 +39,9 @@ set ttymouse=xterm2
 set clipboard+=unnamed
 set clipboard+=autoselect
 
-
+" コメント、改行したらコメントの防止
+augroup auto_comment_off
+	autocmd!
+	autocmd BufEnter * setlocal formatoptions-=r
+	autocmd BufEnter * setlocal formatoptions-=o
+augroup END

@@ -17,6 +17,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'mhinz/vim-startify'
 
 filetype plugin indent on
 NeoBundleCheck
