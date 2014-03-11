@@ -9,15 +9,6 @@ set number
 " viminfoファイルを作成しない
 :set viminfo=
 
-" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap “” “”<Left>
-imap ” ”<Left>
-imap <> <><Left>
-imap “ “<Left>
-
 " 不可視文字を表示
 "set list
 "set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
@@ -26,7 +17,7 @@ imap “ “<Left>
 set hlsearch
 
 " tab幅調整
-set tabstop=4
+set tabstop=3
 
 " open,close
 :set foldmethod=marker

@@ -18,8 +18,9 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'mhinz/vim-startify'
+NeoBundle 'kchmck/vim-coffee-script'
 
-filetype plugin indent on
+:filetype plugin indent off
 NeoBundleCheck
 
 

@@ -77,4 +77,5 @@ if [ -f ~/src/dotfiles/.zshrc.alias ]; then
 	source ~/src/dotfiles/.zshrc.alias
 fi
 
+export PATH=$PATH:$HOME/node_modules/.bin
 
