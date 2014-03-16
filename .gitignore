@@ -19,9 +19,14 @@ Session.vim
 .zshrc.local
 samples
 
-.vim/*
 .oh-my-zsh
 .vim/.netrwhist
 .vimrc_sample
+.vim/bundle/lightline.vim
+.vim/bundle/neocomplcache.vim
+.vim/bundle/vim-coffee-script
+.vim/bundle/vim-colors-solarized
+.vim/bundle/vim-startify
+.vim/bundle/.neobundle/*
 
 
