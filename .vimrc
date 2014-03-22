@@ -5,6 +5,9 @@ if filereadable(expand('~/src/dotfiles/.vimrc.custom'))
 endif
 
 :filetype plugin indent off
-NeoBundleCheck
 
+" Solarized Colorscheme
+syntax enable
+set background=dark
+colorscheme solarized
 
