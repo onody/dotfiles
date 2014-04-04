@@ -15,3 +15,15 @@ colorscheme solarized
 vnoremap > >gv
 vnoremap < <gv
 
+" ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" nerdtree
+set runtimepath^=~/.vim/bundle/nerdtree
+
+" viのみで起動した場合はNERDTreeを実行する
+let file_name = expand("%")
+if has('vim_starting') &&  file_name == ""
+    autocmd VimEnter * NERDTree ./
+endif
+
