@@ -70,11 +70,11 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # 
-if [ -f ~/src/dotfiles/.zshrc.custom ]; then
-	source ~/src/dotfiles/.zshrc.custom
+if [ -f $HOME/src/dotfiles/.zshrc.custom ]; then
+	source $HOME/src/dotfiles/.zshrc.custom
 fi
-if [ -f ~/src/dotfiles/.zshrc.alias ]; then
-	source ~/src/dotfiles/.zshrc.alias
+if [ -f $HOME/src/dotfiles/.zshrc.alias ]; then
+	source $HOME/src/dotfiles/.zshrc.alias
 fi
 
 export PATH=$PATH:$HOME/node_modules/.bin
