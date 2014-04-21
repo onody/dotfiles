@@ -13,4 +13,11 @@ alias tl="tail -f"
 alias du="du -sh ./*"
 alias javac="javac -J-Dfile.encoding=UTF-8"
 
+alias gipull='git pull'
+alias gipush='git push'
+alias gis='git status'
+alias gir='git reset --soft HEAD^'
+alias gilt="git log --oneline --since='12 hour ago'"
+alias gisub='git submodule update --init'
+alias gic='git commit'
 
