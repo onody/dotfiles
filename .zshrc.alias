@@ -20,4 +20,5 @@ alias gir='git reset --soft HEAD^'
 alias gilt="git log --oneline --since='12 hour ago'"
 alias gisub='git submodule update --init'
 alias gic='git commit'
+alias gia='git add --all'
 
