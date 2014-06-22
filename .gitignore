@@ -20,6 +20,6 @@ samples
 
 .oh-my-zsh
 .vim/.netrwhist
-.vim/bundle/
+.vim/bundle/*
 .vimrc_sample
 

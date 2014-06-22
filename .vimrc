@@ -27,16 +27,8 @@ NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 
 
-
-" 下のバーのやつ
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'Lokaltog/vim-powerline'
-set t_Co=256
-let g:lightline = {
-	\ 'colorscheme': 'wombat'
-	\ }
-
 " 色味
+set t_Co=256
 colorscheme desert
 
 " Clipbord系
@@ -57,6 +49,12 @@ NeoBundle 'vim-scripts/ruby-matchit'
 
 " ファイル展開とかのやつ
 NeoBundle 'Shougo/unite.vim'
+
+" 文字コード判定
+:set encoding=utf-8
+:set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
+:set fileformats=unix,dos,mac
+
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
