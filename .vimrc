@@ -41,7 +41,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 
 " Rubyの設定
-NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-rails'
@@ -55,6 +54,8 @@ NeoBundle 'Shougo/unite.vim'
 :set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
 :set fileformats=unix,dos,mac
 
+" Vim Girl
+NeoBundle 'thinca/vim-splash'
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
