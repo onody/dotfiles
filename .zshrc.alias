@@ -22,3 +22,5 @@ alias gisub='git submodule update --init'
 alias gic='git commit'
 alias gia='git add --all'
 
+alias ruby='rbenv exec ruby'
+alias gem='rbenv exec ruby'
