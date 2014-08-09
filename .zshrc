@@ -78,7 +78,6 @@ if [ -f $HOME/src/dotfiles/.zshrc.alias ]; then
 fi
 
 export PATH=$PATH:$HOME/node_modules/.bin
-
 export TERM=xterm-256color
 
 

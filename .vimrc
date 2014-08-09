@@ -25,7 +25,8 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
-
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tomtom/tcomment_vim'
 
 " 色味
 set t_Co=256
@@ -49,10 +50,23 @@ NeoBundle 'vim-scripts/ruby-matchit'
 " ファイル展開とかのやつ
 NeoBundle 'Shougo/unite.vim'
 
+" Markdown
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+
+
 " 文字コード判定
 :set encoding=utf-8
 :set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
 :set fileformats=unix,dos,mac
+
+" 変なファイルはくのを辞める
+:set noundofile
+:set nobackup
+
+" F8キーで、ruby 実行
+nmap <F8> :w<CR>:!ruby %<CR>
 
 " Vim Girl
 NeoBundle 'thinca/vim-splash'
