@@ -26,3 +26,5 @@ brew cask install transmission
 brew cask install virtualbox
 brew cask install vagrant
 brew cask install vlc
+brew cask install monolingual
+brew cask install the-unarchiver
