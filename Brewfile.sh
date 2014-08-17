@@ -9,7 +9,7 @@ brew update
 brew upgrade
 
 # パッケージのインストール
-brew install zsh vim git tig cmake curl wget fontforge go nmap openssl rbenv rbenv-gem-rehash rbenv-gemset brew-cask
+brew install zsh vim git tig cmake curl wget fontforge go nmap openssl rbenv rbenv-gem-rehash rbenv-gemset ruby-build rbenv-gemset brew-cask
 brew install caskroom/cask/brew-cask
 
 brew cask install google-chrome
