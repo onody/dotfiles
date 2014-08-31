@@ -25,27 +25,22 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomtom/tcomment_vim'
 
 " 色味
-set t_Co=256
-colorscheme desert
+"set t_Co=256
+syntax enable
+colorscheme monokai
 
 " Clipbord系
 set clipboard=unnamed
 
-" vimで実行
-NeoBundle 'thinca/vim-quickrun'
-
-" Git操作
-NeoBundle 'tpope/vim-fugitive'
-
 " Rubyの設定
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'vim-scripts/ruby-matchit'
+
+" Twigの設定
+NeoBundle 'evidens/vim-twig'
 
 " ファイル展開とかのやつ
 NeoBundle 'Shougo/unite.vim'
@@ -65,11 +60,12 @@ NeoBundle 'tyru/open-browser.vim'
 :set noundofile
 :set nobackup
 
-" F8キーで、ruby 実行
-nmap <F8> :w<CR>:!ruby %<CR>
-
 " Vim Girl
 NeoBundle 'thinca/vim-splash'
+
+" スペースなど可視化
+NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
@@ -79,8 +75,6 @@ call neobundle#end()
 
 " Required:
 filetype plugin indent on
-filetype indent on
-syntax on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
