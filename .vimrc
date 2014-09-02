@@ -88,6 +88,8 @@ set autoindent
 set expandtab
 set shiftwidth=4
 
+" folding設定
+set foldmethod=marker
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
