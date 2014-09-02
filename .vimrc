@@ -20,12 +20,14 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomtom/tcomment_vim'
+
+" スニペット
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " 色味
 "set t_Co=256
@@ -41,6 +43,9 @@ NeoBundle 'vim-scripts/ruby-matchit'
 
 " Twigの設定
 NeoBundle 'evidens/vim-twig'
+
+" HTMLの設定
+NeoBundle 'othree/html5.vim'
 
 " ファイル展開とかのやつ
 NeoBundle 'Shougo/unite.vim'
@@ -64,8 +69,25 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'thinca/vim-splash'
 
 " スペースなど可視化
-NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+" Vim 起動時 vim-indent-guides を自動起動
+let g:indent_guides_enable_on_vim_startup=1
+" ガイドをスタートするインデントの量
+let g:indent_guides_start_level=2
+" 自動カラー無効
+let g:indent_guides_auto_colors=0
+" 奇数番目のインデントの色
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
+" 偶数番目のインデントの色
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
+" ガイドの幅
+let g:indent_guides_guide_size = 1
+" インデントはスペース4つ
+set tabstop=4
+set autoindent
+set expandtab
+set shiftwidth=4
+
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
