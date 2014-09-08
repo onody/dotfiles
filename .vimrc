@@ -24,12 +24,19 @@ NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomtom/tcomment_vim'
 
+" 即時実行QuickRun
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config={'_': {'split': 'vertical'}}
+set splitright
+nnoremap <silent> <C-l> :QuickRun<CR>
+
 " スニペット
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 if filereadable(expand('~/src/dotfiles/.vimrc.neocomplcache'))
     source ~/src/dotfiles/.vimrc.neocomplcache
 endif
+
 
 " 色味
 "set t_Co=256
@@ -52,6 +59,8 @@ NeoBundle 'othree/html5.vim'
 " ファイル展開とかのやつ
 NeoBundle 'Shougo/unite.vim'
 
+" コメントアウト
+NeoBundle 'tomtom/tcomment_vim'
 
 " 文字コード判定
 :set encoding=utf-8
