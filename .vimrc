@@ -1,6 +1,6 @@
 if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " Required:
@@ -10,13 +10,13 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
-	\ 'build' : {
-	\ 'windows' : 'make -f make_mingw32.mak',
-	\ 'cygwin' : 'make -f make_cygwin.mak',
-	\ 'mac' : 'make -f make_mac.mak',
-	\ 'unix' : 'make -f make_unix.mak',
-	\ },
-\ }
+            \ 'build' : {
+            \ 'windows' : 'make -f make_mingw32.mak',
+            \ 'cygwin' : 'make -f make_cygwin.mak',
+            \ 'mac' : 'make -f make_mac.mak',
+            \ 'unix' : 'make -f make_unix.mak',
+            \ },
+            \ }
 
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
@@ -25,9 +25,11 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomtom/tcomment_vim'
 
 " スニペット
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+if filereadable(expand('~/src/dotfiles/.vimrc.neocomplcache'))
+    source ~/src/dotfiles/.vimrc.neocomplcache
+endif
 
 " 色味
 "set t_Co=256
@@ -50,11 +52,6 @@ NeoBundle 'othree/html5.vim'
 " ファイル展開とかのやつ
 NeoBundle 'Shougo/unite.vim'
 
-" Markdown
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-
 
 " 文字コード判定
 :set encoding=utf-8
@@ -67,6 +64,11 @@ NeoBundle 'tyru/open-browser.vim'
 
 " Vim Girl
 NeoBundle 'thinca/vim-splash'
+
+
+" lightline
+:set laststatus=2
+NeoBundle 'itchyny/lightline.vim'
 
 " スペースなど可視化
 NeoBundle 'nathanaelkane/vim-indent-guides'

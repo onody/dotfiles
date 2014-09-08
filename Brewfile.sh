@@ -28,3 +28,11 @@ brew cask install vagrant
 brew cask install vlc
 brew cask install monolingual
 brew cask install the-unarchiver
+
+# fontインストール
+brew tap sanemat/font
+brew install ricty
+cp -f /usr/local/Cellar/ricty/3.2.2/share/fonts/Ricty*.ttf ~/Library/Fonts/
+fc-cache -vf
+
+
