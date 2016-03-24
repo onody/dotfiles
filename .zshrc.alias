@@ -1,26 +1,43 @@
 
 # alias		-------------------
 
-alias ls="ls -la"
-alias lsd="ls -lat"
-alias mv="mv -i"
-alias cp="cp -i"
-alias rm="rm -i"
-alias ps="ps --sort=start_time"
-alias rmr="rm -rf"
-alias cl="clear"
-alias tl="tail -f"
-alias du="du -sh ./*"
-alias javac="javac -J-Dfile.encoding=UTF-8"
+alias rm='rm -i'
 
-alias gipull='git pull'
-alias gipush='git push'
-alias gis='git status'
-alias gir='git reset --soft HEAD^'
-alias gilt="git log --oneline --since='12 hour ago'"
-alias gisub='git submodule update --init'
-alias gic='git commit'
-alias gia='git add --all'
+alias r='bundle exec rails'
+alias rails='bundle exec rails'
+alias rake='bundle exec rake'
+alias rspec='bundle exec rspec'
 
-alias ruby='rbenv exec ruby'
-alias gem='rbenv exec ruby'
+# ----------------------
+# Git Aliases
+# ----------------------
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add -A'
+alias gb='git branch'
+alias gbd='git branch -d '
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gd='git diff'
+alias gda='git diff HEAD'
+alias gi='git init'
+alias gl='git log'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gm='git merge --no-ff'
+alias gp='git pull'
+alias gs='git status'
+alias gss='git status -s'
+#alias gst='git stash'
+#alias gstl='git stash list'
+#alias gstp='git stash pop'
+#alias gstd='git stash drop'
+
+# ----------------------
+# Git Functions
+# ----------------------
+# Git log find by commit message
+function glf() { git log --all --grep="$1"; }

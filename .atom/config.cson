@@ -1,0 +1,15 @@
+"*":
+  core:
+    audioBeep: false
+  editor:
+    fontSize: 12
+    invisibles: {}
+    showInvisibles: true
+  "exception-reporting":
+    userId: "3d076296-713e-b7c3-66f1-541ce85a89cf"
+  "linter-rubocop":
+    command: "/Users/kohei.onodera/.rbenv/shims/rubocop"
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnlyLines: true

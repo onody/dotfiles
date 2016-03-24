@@ -5,9 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="agnoster"
-#ZSH_THEME="amuse"
-ZSH_THEME="af-magic"
+ZSH_THEME="amuse"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -39,7 +37,7 @@ ZSH_THEME="af-magic"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
@@ -54,22 +52,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# 
 if [ -f $HOME/src/dotfiles/.zshrc.custom ]; then
 	source $HOME/src/dotfiles/.zshrc.custom
 fi
@@ -82,9 +67,4 @@ export TERM=xterm-256color
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-#export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-#alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-#alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-#[[ -s /Users/onody/.tmuxinator/scripts/tmuxinator ]] && source /Users/onody/.tmuxinator/scripts/tmuxinator
+eval "$(rbenv init -)"

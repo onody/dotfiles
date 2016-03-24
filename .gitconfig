@@ -1,6 +1,6 @@
 [user]
-	name = Kohei Onodera
-	email = onodera212@gmail.com
+  name = Kohei Onodera
+  email = kohei.onodera@supership.jp
 [color]
   # colorの設定(以下のコマンドは自動で色つける)
   status = auto
@@ -8,15 +8,17 @@
   branch = auto
   interactive = auto
   grep = auto
-
-
+  ui = auto
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [push]
-	default = matching
+  default = matching
 [core]
-	editor = vim
+  editor = vim
+  excludesfile = /Users/kohei.onodera/.gitignore_global
+[merge]
+  ff = false

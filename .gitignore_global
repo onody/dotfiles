@@ -17,9 +17,4 @@ Session.vim
 *.elc
 .zshrc.local
 samples
-
-.oh-my-zsh
-.vim/.netrwhist
-.vim/bundle/*
-.vimrc_sample
-
+.idea

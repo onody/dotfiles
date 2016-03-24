@@ -1,111 +1,37 @@
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+"NeoBundle Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+set runtimepath^=/Users/kohei.onodera/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('/Users/kohei.onodera/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \ 'windows' : 'make -f make_mingw32.mak',
-            \ 'cygwin' : 'make -f make_cygwin.mak',
-            \ 'mac' : 'make -f make_mac.mak',
-            \ 'unix' : 'make -f make_unix.mak',
-            \ },
-            \ }
 
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tomtom/tcomment_vim'
-
-" 即時実行QuickRun
-NeoBundle 'thinca/vim-quickrun'
-let g:quickrun_config={'_': {'split': 'vertical'}}
-set splitright
-nnoremap <silent> <C-l> :QuickRun<CR>
-
-" スニペット
-NeoBundle 'Shougo/neosnippet'
+" Add or remove your Bundles here:
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-if filereadable(expand('~/src/dotfiles/.vimrc.neocomplcache'))
-    source ~/src/dotfiles/.vimrc.neocomplcache
-endif
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'scrooloose/nerdtree'
 
-
-" 色味
-"set t_Co=256
-syntax enable
-colorscheme monokai
-
-" Clipbord系
-set clipboard=unnamed
 
 " Rubyの設定
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'vim-scripts/ruby-matchit'
 
-" Twigの設定
-NeoBundle 'evidens/vim-twig'
+" You can specify revision/branch/tag.
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 
-" HTMLの設定
-NeoBundle 'othree/html5.vim'
-
-" ファイル展開とかのやつ
-NeoBundle 'Shougo/unite.vim'
-
-" コメントアウト
-NeoBundle 'tomtom/tcomment_vim'
-
-" 文字コード判定
-:set encoding=utf-8
-:set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
-:set fileformats=unix,dos,mac
-
-" 変なファイルはくのを辞める
-:set noundofile
-:set nobackup
-
-" Vim Girl
-NeoBundle 'thinca/vim-splash'
-
-
-" lightline
-:set laststatus=2
-NeoBundle 'itchyny/lightline.vim'
-
-" スペースなど可視化
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" Vim 起動時 vim-indent-guides を自動起動
-let g:indent_guides_enable_on_vim_startup=1
-" ガイドをスタートするインデントの量
-let g:indent_guides_start_level=2
-" 自動カラー無効
-let g:indent_guides_auto_colors=0
-" 奇数番目のインデントの色
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
-" 偶数番目のインデントの色
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
-" ガイドの幅
-let g:indent_guides_guide_size = 1
-" インデントはスペース4つ
-set tabstop=4
-set autoindent
-set expandtab
-set shiftwidth=4
-
-" folding設定
-set foldmethod=marker
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-
+" Required:
 call neobundle#end()
 
 " Required:
@@ -114,3 +40,31 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+" 色味
+" syntax enable
+set background=dark
+let g:hybrid_use_iTerm_colors = 1
+colorscheme hybrid
+syntax on
+
+" Clipbord系
+set clipboard=unnamed
+
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
+
+" 変なファイルはくのを辞める
+set noundofile
+set nobackup
+
+" インデントはスペース4つ
+set tabstop=2
+set autoindent
+set expandtab
+set shiftwidth=2
+
+" keymap
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
