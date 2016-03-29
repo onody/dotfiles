@@ -18,5 +18,3 @@ setopt EXTENDED_HISTORY
 
 # cdいらず
 setopt auto_cd
-
-

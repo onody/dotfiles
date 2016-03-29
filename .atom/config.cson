@@ -7,6 +7,8 @@
     showInvisibles: true
   "exception-reporting":
     userId: "3d076296-713e-b7c3-66f1-541ce85a89cf"
+  linter:
+    showErrorPanel: false
   "linter-rubocop":
     command: "/Users/kohei.onodera/.rbenv/shims/rubocop"
   welcome:

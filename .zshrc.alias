@@ -1,12 +1,12 @@
 
 # alias		-------------------
-
 alias rm='rm -i'
+alias cl='clear'
 
 alias r='bundle exec rails'
 alias rails='bundle exec rails'
 alias rake='bundle exec rake'
-alias rspec='bundle exec rspec'
+alias rspec='RAILS_ENV=test bundle exec rspec'
 
 # ----------------------
 # Git Aliases

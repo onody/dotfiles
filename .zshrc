@@ -68,3 +68,6 @@ export TERM=xterm-256color
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# rails
+export RAILS_ENV=development
