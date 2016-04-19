@@ -6,6 +6,7 @@ alias ls='ls -la'
 alias r='bundle exec rails'
 alias rails='bundle exec rails'
 alias rake='bundle exec rake'
+alias cap='bundle exec cap'
 alias rspec='RAILS_ENV=test bundle exec rspec'
 
 # ----------------------
