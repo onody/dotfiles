@@ -1,16 +1,70 @@
 "*":
+  "atom-beautify":
+    apex: {}
+    arduino: {}
+    c: {}
+    cfml: {}
+    coffeescript: {}
+    cpp: {}
+    cs: {}
+    css: {}
+    d: {}
+    ejs: {}
+    erb: {}
+    fortran: {}
+    general:
+      _analyticsUserId: "e62e6017-d0d4-4aca-aee7-bb5290c2df80"
+    gherkin: {}
+    handlebars: {}
+    html: {}
+    jade: {}
+    java: {}
+    js: {}
+    json: {}
+    jsx: {}
+    latex: {}
+    less: {}
+    marko: {}
+    mustache: {}
+    objectivec: {}
+    pawn: {}
+    perl: {}
+    php: {}
+    python: {}
+    riot: {}
+    ruby: {}
+    rust: {}
+    sass: {}
+    scss: {}
+    spacebars: {}
+    sql: {}
+    svg: {}
+    swig: {}
+    tss: {}
+    twig: {}
+    typescript: {}
+    vala: {}
+    visualforce: {}
+    xml: {}
+    xtemplate: {}
   core:
     audioBeep: false
+    disabledPackages: [
+      "pretty-json"
+      "atom-beautify"
+    ]
   editor:
     fontSize: 12
     invisibles: {}
     showInvisibles: true
   "exception-reporting":
     userId: "3d076296-713e-b7c3-66f1-541ce85a89cf"
-  linter:
-    showErrorPanel: false
+  linter: {}
   "linter-rubocop":
     command: "/Users/kohei.onodera/.rbenv/shims/rubocop"
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  "vim-mode": {}
   welcome:
     showOnStartup: false
   whitespace: {}
