@@ -53,6 +53,8 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=$HOME
 
 
 if [ -f $HOME/src/dotfiles/.zshrc.custom ]; then
