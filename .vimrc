@@ -1,56 +1,31 @@
-"NeoBundle Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+" Plug
+call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-rails'
+Plug 'vim-scripts/ruby-matchit'
+Plug 'tpope/vim-endwise'
+Plug 'scrooloose/syntastic'
+call plug#end()
 
-" Required:
-set runtimepath^=/Users/kohei.onodera/.vim/bundle/neobundle.vim/
-
-" Required:
-call neobundle#begin(expand('/Users/kohei.onodera/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" Add or remove your Bundles here:
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'scrooloose/nerdtree'
-
-
-" Rubyの設定
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'vim-scripts/ruby-matchit'
-
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+" filetype設定
+filetype on
+filetype plugin on
+filetype indent on
 
 " 色味
-" syntax enable
+set t_Co=256
 set background=dark
 let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
 syntax on
 
-" Clipbord系
-set clipboard=unnamed
+" ペースト
+set pastetoggle=<F12>
+set clipboard=unnamed,unnamedplus,autoselect
 
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
@@ -66,5 +41,37 @@ set autoindent
 set expandtab
 set shiftwidth=2
 
-" keymap
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" カレント行ハイライト
+set cursorline
+" アンダーラインを引く(color terminal)
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+" アンダーラインを引く(gui)
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+
+" マウス対応
+set mouse=a
+set ttymouse=xterm2
+
+" 勝手なコメントアウトを防止
+autocmd FileType * setlocal formatoptions-=ro
+
+" vim-gitgutter
+set updatetime=250
+
+" Plugin key-mappings.
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+ 
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
+ 
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif

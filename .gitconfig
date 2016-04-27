@@ -19,6 +19,8 @@
   default = matching
 [core]
   editor = vim
-  excludesfile = /Users/kohei.onodera/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [merge]
   ff = false
+[ghq]
+	root = ~/src
