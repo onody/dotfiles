@@ -9,6 +9,7 @@ Plug 'tpope/vim-rails'
 Plug 'vim-scripts/ruby-matchit'
 Plug 'tpope/vim-endwise'
 Plug 'scrooloose/syntastic'
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 " filetype設定
@@ -75,3 +76,8 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+" easy align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
