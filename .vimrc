@@ -10,6 +10,7 @@ Plug 'vim-scripts/ruby-matchit'
 Plug 'tpope/vim-endwise'
 Plug 'scrooloose/syntastic'
 Plug 'junegunn/vim-easy-align'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " filetype設定
@@ -81,3 +82,19 @@ endif
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char = '›'
+
+"全角スペースをハイライト表示
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme       * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
+endif
