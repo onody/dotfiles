@@ -56,6 +56,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
+export LESSCHARSET=utf-8
 
 
 if [ -f $HOME/src/dotfiles/.zshrc.custom ]; then
