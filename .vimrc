@@ -82,6 +82,9 @@ endif
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" lightline.vim
+set laststatus=2
+
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_char = '›'
