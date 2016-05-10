@@ -11,6 +11,7 @@ Plug 'tpope/vim-endwise'
 Plug 'scrooloose/syntastic'
 Plug 'junegunn/vim-easy-align'
 Plug 'Yggdroot/indentLine'
+Plug 'fatih/vim-go'
 call plug#end()
 
 " filetype設定
