@@ -57,7 +57,7 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 export LESSCHARSET=utf-8
-
+export LANG=ja_JP.UTF-8
 
 if [ -f $HOME/src/dotfiles/.zshrc.custom ]; then
 	source $HOME/src/dotfiles/.zshrc.custom
