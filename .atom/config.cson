@@ -62,8 +62,7 @@
   linter: {}
   "linter-rubocop":
     command: "/Users/kohei.onodera/.rbenv/shims/rubocop"
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   "vim-mode": {}
   welcome:
     showOnStartup: false
