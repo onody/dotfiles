@@ -55,7 +55,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export LESSCHARSET=utf-8
 export LANG=ja_JP.UTF-8
 
