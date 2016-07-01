@@ -42,12 +42,11 @@ alias gss='git status -s'
 # ----------------------
 # Git log find by commit message
 function glf() { git log --all --grep="$1"; }
-function gfmd() {
-  git fetch origin master develop
+function gpr() {
   gco master
-  git reset --hard origin/master
+  git pull --rebase
   gco develop
-  git reset --hard origin/develop
+  git pull --rebase
   gco master
 }
 
