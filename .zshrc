@@ -76,3 +76,8 @@ eval "$(rbenv init -)"
 
 # rails
 export RAILS_ENV=development
+
+# wo env
+export PATH=$PATH:$HOME/docker/bin
+export GOPATH=/home/kohei.onodera/go
+export PATH=/home/kohei.onodera/bin:/home/kohei.onodera/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kohei.onodera/docker/bin:/home/kohei.onodera/go/bin:/usr/local/go/bin
