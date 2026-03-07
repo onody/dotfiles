@@ -1,0 +1,32 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# 機密・ローカル固有
+*.local
+*.secret
+*_secret*
+.env
+.env.*
+
+# SSH（鍵は絶対入れるな）
+.ssh/id_*
+.ssh/known_hosts
+
+# GPG
+.gnupg/
+
+# 履歴ファイル（プライバシー）
+.bash_history
+.zsh_history
+.python_history
+
+# キャッシュ
+.cache/
+__pycache__/
+
+# .claudeは原則全除外、必要なものだけ許可
+.claude/*
+!.claude/CLAUDE.md
+!.claude/settings.json
+!.claude/skills/
