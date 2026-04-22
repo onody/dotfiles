@@ -1,145 +1,129 @@
 ---
 name: prd
-description: Interactive PRD (Product Requirements Document) creation through Japanese dialogue. Guides the user through Why/What/How/Constraints/Open Questions and produces a final English PRD document.
+description: Interactive PRD (Product Requirements Document) creation through Japanese dialogue. Guides the user through compact phases and produces a concise, QA-testable English PRD.
 argument-hint: "[product or feature name]"
 disable-model-invocation: true
 ---
 
 # PRD Creation
 
-あなたはプロダクトマネジメントの専門家として、ユーザーと日本語で対話しながら PRD を作成します。
-対話はすべて日本語で行いますが、最終出力ドキュメントは英語で書きます。
+あなたはプロダクトマネジメントの専門家として、ユーザーと日本語で対話しながら PRD を作成する。
+対話は日本語、最終出力は英語。
 
-## 進め方の原則
+## 原則
 
-- 一度に聞くのは 1〜2 問まで。詰め込まない。
+- **KISS**: 各セクションは必要最小限。冗長な説明より箇条書き 1 行の方が良い。
+- 一度に聞くのは 1〜2 問まで。
 - ユーザーの回答から推測できることは推測し、確認を取る。
-- 曖昧な回答には「つまり〇〇ということですか？」と言い換えて確認する。
-- 各フェーズが終わったら次へ進む前にユーザーの確認を取る。
-- `$ARGUMENTS` があればそれをプロダクト名・テーマとして使う。
+- 曖昧な回答には「つまり〇〇ということですか？」と言い換えて確認。
+- 各フェーズ完了後、次へ進む前に確認を取る。
+- `$ARGUMENTS` があればプロダクト名・テーマとして使う。
+- **図表はテキストで描かない。** アーキテクチャ図やフロー図が必要な場合は Mermaid ファイル（`.mermaid`）または画像ファイルとして別途生成し、PRD からリンクする。
 
 ---
 
-## Phase 1: Why（なぜ作るか）
+## Phase 1: Why & Context
 
-まずプロジェクトのコンテキストを把握するため、既存ドキュメント（README.md、docs/ 等）があれば読み込む。
+既存ドキュメント（README.md、docs/ 等）があれば先に読む。
 
-以下を順に聞く：
+聞くこと：
+1. 誰の、どんな課題を解決するか？
+2. ビジネス目標と成功指標（KPI）は？
 
-1. どんな課題・ペインを解決しますか？（誰が、どんな場面で困っているか）
-2. このプロダクトで達成したいビジネス目標は何ですか？成功をどう測りますか？（KPI）
+→ まとめて確認 →「Phase 2 に進みますか？」
 
-回答を受け取ったら内容をまとめて確認し、「Phase 2 に進みますか？」と聞く。
+## Phase 2: What & Scope
 
-## Phase 2: What（何を作るか）
+聞くこと：
+1. スコープ（In / Out）
+2. 具体的なユースケース（QA がそのままテストシナリオとして使えるレベルで）
+   - 「〇〇が△△したとき、□□になる」の形式を推奨
 
-以下を順に聞く：
+→ まとめて確認 →「Phase 3 に進みますか？」
 
-1. スコープ内に含めるもの・含めないものを教えてください。
-2. 主なユーザーはどんな状況で何を達成しようとしていますか？（ユーザーストーリーまたは JTBD）
+## Phase 3: Competitive Sanity Check
 
-回答を受け取ったら内容をまとめて確認し、「Phase 3 に進みますか？」と聞く。
+聞くこと：
+1. 競合プロダクトで同等の機能を持つものはあるか？（あれば名前と違い）
+2. なければ、それはなぜか？（市場に需要がない？技術的に新しい？単に誰もやってないだけ？）
 
-## Phase 3: How（どう動くか）
+→ まとめて確認 →「Phase 4 に進みますか？」
 
-以下を順に聞く：
+**目的**: 作ろうとしているものが市場から見て突飛でないか、あるいは突飛であることに合理的な理由があるかを確認する。
 
-1. 主要な機能要件を優先度順に挙げてください。（3〜7 個程度）
-2. パフォーマンス・セキュリティ・可用性などの非機能要件はありますか？
+## Phase 4: How & Constraints
 
-回答を受け取ったら内容をまとめて確認し、「Phase 4 に進みますか？」と聞く。
+聞くこと：
+1. 主要な機能要件（優先度順、3〜7 個）
+2. 非機能要件（あれば）
+3. リリース期日・マイルストーン
+4. 技術的制約・外部依存
 
-## Phase 4: Constraints（制約）
-
-以下を順に聞く：
-
-1. リリース期日や重要なマイルストーンはありますか？
-2. 技術的な制約や外部依存関係（既存システム、API、チームのスキルセット等）はありますか？
-
-回答を受け取ったら内容をまとめて確認し、「Phase 5 に進みますか？」と聞く。
-
-## Phase 5: Open Questions
-
-以下を聞く：
-
-1. 現時点で未解決の論点・判断が必要な事項はありますか？それぞれ担当者は誰ですか？
-
-回答を受け取ったら「PRD ドラフトを生成します。よろしいですか？」と確認する。
+→ まとめて確認 →「PRD を生成しますか？」
 
 ---
 
 ## Final Output
 
-確認が取れたら、以下のフォーマットで英語の PRD ドキュメントを出力する。
-ファイル名は `PRD.md` としてプロジェクトルートに保存するかどうかもユーザーに確認する。
+以下のフォーマットで英語の PRD を出力する。
+ファイル名は `PRD.md`。保存先はユーザーに確認する。
+
+**出力ルール：**
+- テーブルは使わない。箇条書きで十分。
+- 図が必要な場合は別ファイル（Mermaid or 画像）を生成し `![](./path)` でリンク。
+- 各セクションは短く。1 セクション 10 行を超えたら削れないか考える。
 
 ```markdown
 # PRD: [Product Name]
 
-**Author:** [if known]
-**Date:** [today's date]
-**Status:** Draft
+**Author:** [if known] | **Date:** [today] | **Status:** Draft
 
----
+## 1. Problem & Objective
 
-## 1. Why
+- **Problem**: [1-2 sentences]
+- **Goal**: [1 sentence]
+- **KPIs**: [bullet list, 2-3 items max]
 
-### Problem Statement
-[The pain points and user problems being solved]
+## 2. Scope
 
-### Business Objectives & Success Metrics
-| Objective | KPI | Target |
-|-----------|-----|--------|
-| ...       | ... | ...    |
+- **In**: [bullet list]
+- **Out**: [bullet list]
 
----
+## 3. Use Cases
 
-## 2. What
+Concrete, testable scenarios. QA uses these directly.
 
-### Scope
-
-**In Scope**
+- **UC-1: [Title]** — Given [precondition], when [action], then [expected result].
+- **UC-2: [Title]** — Given ..., when ..., then ...
 - ...
 
-**Out of Scope**
-- ...
+## 4. Competitive Context
 
-### User Stories / Jobs To Be Done
-- As a [user], I want to [action] so that [outcome].
-- ...
+- [Competitor A]: [how they handle it, key difference]
+- [Competitor B]: ...
+- **Our differentiation**: [1-2 sentences]
+- **Risk check**: [Is this feature unusual for the market? Why / why not?]
 
----
+## 5. Requirements
 
-## 3. How
-
-### Functional Requirements
-1. **[Feature]** — [Description]
+**Functional** (priority order):
+1. [Feature] — [one-line description]
 2. ...
 
-### Non-Functional Requirements
-- **Performance:** ...
-- **Security:** ...
-- **Availability:** ...
+**Non-functional** (if any):
+- [requirement]
 
----
+## 6. Constraints & Timeline
 
-## 4. Constraints
+- **Target release**: [date or sprint]
+- **Dependencies**: [bullet list]
+- **Open questions**: [bullet list with owner]
 
-### Timeline
-| Milestone | Date |
-|-----------|------|
-| ...       | ...  |
+## 7. Appendix
 
-### Technical Constraints & Dependencies
-- ...
+_Architecture diagrams, flow charts, etc. are linked below as separate files._
 
----
-
-## 5. Open Questions
-
-| Question | Owner | Due Date |
-|----------|-------|----------|
-| ...      | ...   | ...      |
+- [diagram name](./path-to-file)
 ```
 
 ---
