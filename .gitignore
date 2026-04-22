@@ -28,5 +28,4 @@ __pycache__/
 # .claudeは原則全除外、必要なものだけ許可
 .claude/*
 !.claude/CLAUDE.md
-!.claude/settings.json
 !.claude/skills/
