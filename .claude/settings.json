@@ -1,5 +1,14 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "enabledPlugins": {
     "swift-lsp@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash"
+    ]
   }
 }

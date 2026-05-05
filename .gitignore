@@ -29,3 +29,8 @@ __pycache__/
 .claude/*
 !.claude/CLAUDE.md
 !.claude/skills/
+
+# .codexは原則全除外、必要なものだけ許可
+.codex/*
+!.codex/AGENTS.md
+
