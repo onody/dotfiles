@@ -1,0 +1,6 @@
+{
+  "name": "prd",
+  "description": "プロダクト全体のPRDを対話形式で作成",
+  "version": "1.0.0",
+  "invocations": ["/prd"]
+}
