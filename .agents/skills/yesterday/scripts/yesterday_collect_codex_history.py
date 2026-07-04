@@ -14,9 +14,12 @@ STATE_DB_PATH = CODEX_DIR / "state_5.sqlite"
 TZ = dt.timezone(dt.timedelta(hours=9))
 
 
-def today_range_epoch() -> tuple[int, int, str]:
-    now = dt.datetime.now(TZ)
-    start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+def target_day_range_epoch(target_date: str | None = None) -> tuple[int, int, str]:
+    if target_date:
+        start = dt.datetime.combine(dt.date.fromisoformat(target_date), dt.time.min, tzinfo=TZ)
+    else:
+        today = dt.datetime.now(TZ).replace(hour=0, minute=0, second=0, microsecond=0)
+        start = today - dt.timedelta(days=1)
     end = start + dt.timedelta(days=1)
     return int(start.timestamp()), int(end.timestamp()), start.date().isoformat()
 
@@ -72,12 +75,15 @@ def load_history(thread_ids: set[str], start_ts: int, end_ts: int) -> list[tuple
 
 
 def main() -> None:
-    start_ts, end_ts, iso_date = today_range_epoch()
+    import sys
+
+    target_date = sys.argv[1] if len(sys.argv) > 1 else None
+    start_ts, end_ts, iso_date = target_day_range_epoch(target_date)
     threads = load_repo_threads(start_ts, end_ts)
     thread_ids = {thread_id for thread_id, _, _ in threads}
     items = load_history(thread_ids, start_ts, end_ts)
     if not items and not threads:
-        print("NO_TODAY_CODEX_MESSAGES")
+        print("NO_TARGET_DAY_CODEX_MESSAGES")
         return
 
     print(f"# codex-session {iso_date}")

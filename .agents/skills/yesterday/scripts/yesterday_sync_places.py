@@ -13,7 +13,7 @@ from pathlib import Path
 REPO_ROOT = Path("/Users/onod/src/memo")
 PLACES_PATH = REPO_ROOT / "wiki/places.md"
 DIARY_DIR = REPO_ROOT / "raw/diary"
-USER_AGENT = "Mozilla/5.0 (compatible; Codex EOD Places Sync)"
+USER_AGENT = "Mozilla/5.0 (compatible; Yesterday Places Sync)"
 
 KEYWORDS = ("行きたい", "行ってみたい", "食べたい", "泊まりたい", "絶対次食べる")
 FOOD_DOMAINS = ("tabelog.com", "s.tabelog.com", "ramendb.supleks.jp")
