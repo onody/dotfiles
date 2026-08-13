@@ -11,7 +11,7 @@ description: memo リポジトリの前日分ラップアップ(旧EOD)ルーテ
 
 - デフォルトの対象日は常に「前日」（JST）。このルーティンは翌朝に実行する運用のため、当日ではなく前日分を扱う
 - auto-diary の `summarize`（Mac起動時、前日分のOCRサマリ生成）から自動起動された場合は、プロンプトに対象日（前日の日付、YYYY-MM-DD）が明示される。この場合はその対象日をそのまま使う
-  - Step 3 の会話ログ抽出、`yesterday_collect_claude_history.py` / `yesterday_collect_codex_history.py <対象日>` の引数、Step 5 の `yesterday_finalize.sh <対象日>` の引数、コミットメッセージの日付に反映する
+  - Step 4 の `yesterday_finalize.sh <対象日>` の引数、コミットメッセージの日付に反映する
   - `raw/diary/YYYY-MM-DD.auto.md` は対象日と同じ日付のものを優先して読む
 - ユーザーが明示的に別の日付を指定した場合（例:「6/20分をやって」）はその日付を対象日とする
 
@@ -67,59 +67,13 @@ clipping の正規化:
 - 壊れたリンクを報告する
 - 明らかに直せるものだけ修正する
 
-### 3. 対象日の会話ログから洞察を拾う
-
-対象日の Claude 会話ログを次のスクリプトで読む:
-
-```bash
-python3 /Users/onod/.agents/skills/yesterday/scripts/yesterday_collect_claude_history.py [対象日]
-```
-
-引数を省略すると前日の日付になる。`~/.claude/projects/-Users-onod-src-memo/*.jsonl` から対象日の user/assistant 発話を抽出する。
-
-加えて、Codex / ChatGPT Desktop 側も読む:
-
-```bash
-python3 /Users/onod/.agents/skills/yesterday/scripts/yesterday_collect_codex_history.py [対象日]
-```
-
-引数を省略すると前日の日付になる。
-
-これは `~/.dotfiles/.codex/history.jsonl` と `~/.dotfiles/.codex/state_5.sqlite` を使い、`/Users/onod/src/memo` を対象にした対象日の Codex ユーザー発話だけを拾う。
-
-注意:
-- Claude 側は user / assistant の両方を見られる
-- Codex 側は現状、安定して取れるのはユーザー発話だけ
-- `Library/Application Support/com.openai.chat` に会話データはあるが、素直なテキストとしては扱いにくい。無理に掘らず、Codex はユーザー発話を一次ソースとして扱う
-
-抽出対象:
-- 事実
-- 学び
-- 意思決定
-- 新しい知識
-- 方針変更
-
-除外対象:
-- 単なるツール操作
-- ファイル確認
-- コード編集の作業ログ
-- 雑談
-- このルーティン実行そのもの
-
-wiki に反映する価値があるものだけ残す。
-
-出典:
-- Claude 由来: `> [source: claude-session YYYY-MM-DD]`
-- Codex 由来: `> [source: codex-session YYYY-MM-DD]`
-
-### 4. Ingest
+### 3. Ingest
 
 対象ソースは次で決める:
 
 1. `git -C /Users/onod/src/memo diff --name-only HEAD`
 2. `git -C /Users/onod/src/memo ls-files --others --exclude-standard raw/`
-3. Step 3 で拾った会話ログの洞察
-4. 対象日または直近で更新された `raw/diary/YYYY-MM-DD.auto.md`（auto-diary による画面活動サマリ）
+3. 対象日または直近で更新された `raw/diary/YYYY-MM-DD.auto.md`（auto-diary による画面活動サマリ）
 
 進め方:
 - 対象ソースを読む
@@ -141,7 +95,7 @@ python3 /Users/onod/.agents/skills/yesterday/scripts/yesterday_sync_places.py
 - 1 回の ingest で更新する wiki ページは最大 5 ページ
 - 更新したページの `最終更新:` は対象日の日付にする
 
-### 5. Git
+### 4. Git
 
 最後は固定スクリプトで実行する:
 
