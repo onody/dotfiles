@@ -9,6 +9,7 @@
       "Bash"
     ]
   },
+  "model": "sonnet",
   "hooks": {
     "PermissionRequest": [
       {
@@ -75,5 +76,5 @@
     "swift-lsp@claude-plugins-official": true
   },
   "tui": "fullscreen",
-  "model": "sonnet"
+  "agentPushNotifEnabled": true
 }

@@ -18,6 +18,12 @@ USER_AGENT = "Mozilla/5.0 (compatible; Yesterday Places Sync)"
 KEYWORDS = ("行きたい", "行ってみたい", "食べたい", "泊まりたい", "絶対次食べる")
 FOOD_DOMAINS = ("tabelog.com", "s.tabelog.com", "ramendb.supleks.jp")
 PLACE_HINT_DOMAINS = ("buenourasoe.com",)
+# 静的取得ではログイン画面しか返らずタイトルが取れないホスト。
+# ここは自動でプレースホルダー行を作らず、手動レビュー（ブラウザでの再クロール）に回す。
+UNRESOLVABLE_HOSTS = ("x.com", "twitter.com")
+# tabelog等のURLパス先頭セグメントは都道府県名（英語）。東京は区市町村までは分からないため
+# 「東京都」であることの判定にのみ使う（区市町村名の確定はエリア文字列 or 手動確認に委ねる）。
+TOKYO_PATH_PREFIXES = ("tokyo",)
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.IGNORECASE | re.DOTALL)
 OG_TITLE_RE = re.compile(
     r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\'](.*?)["\']',
@@ -196,10 +202,18 @@ def parse_existing_rows(lines: list[str]) -> tuple[dict[str, set[tuple[str, str]
     return rows, names
 
 
+@dataclass
+class PendingReview:
+    line: str
+    url: str
+    source: str
+
+
 def collect_diary_candidates(
     existing_urls: set[str],
     existing_rows: dict[str, set[tuple[str, str]]],
     existing_names: dict[str, set[str]],
+    pending_review: list[PendingReview],
 ) -> list[Candidate]:
     candidates: list[Candidate] = []
     for diary_path in sorted(DIARY_DIR.glob("*.md")):
@@ -212,6 +226,13 @@ def collect_diary_candidates(
                 continue
             for url in urls:
                 if url in existing_urls:
+                    continue
+                host = urllib.parse.urlparse(url).netloc.lower()
+                if any(h in host for h in UNRESOLVABLE_HOSTS):
+                    # 静的取得だとログイン画面しか読めずタイトルが取れないため、
+                    # プレースホルダー行（未整理/日付ベースの仮名）を自動生成しない。
+                    # ブラウザでの再クロールが必要な候補として報告するだけに留める。
+                    pending_review.append(PendingReview(line=line.strip(), url=url, source=str(diary_path)))
                     continue
                 per_file_index += 1
                 candidate = resolve_candidate(line, url, str(diary_path), per_file_index)
@@ -256,7 +277,8 @@ def main() -> None:
     lines = PLACES_PATH.read_text().splitlines(keepends=True)
     existing_urls = parse_existing_urls(lines)
     existing_rows, existing_names = parse_existing_rows(lines)
-    candidates = collect_diary_candidates(existing_urls, existing_rows, existing_names)
+    pending_review: list[PendingReview] = []
+    candidates = collect_diary_candidates(existing_urls, existing_rows, existing_names, pending_review)
 
     by_section: dict[str, list[Candidate]] = {}
     for candidate in candidates:
@@ -271,6 +293,18 @@ def main() -> None:
         lines = insert_candidates(lines, section_name, by_section.get(section_name, []))
 
     PLACES_PATH.write_text("".join(lines))
+
+    if candidates:
+        print("## エリア正規化が必要な追加候補（自動挿入済み）")
+        print("東京都内なら区市町村名、それ以外なら都道府県名になっているか確認し、必要ならブラウザ/Web検索で正規化してから確定すること。")
+        for c in candidates:
+            print(f"- {c.name} | {c.area} | {c.source}")
+
+    if pending_review:
+        print("\n## 手動レビューが必要な候補（自動取得できず未挿入）")
+        print("X(Twitter)等はログイン壁で静的取得できないため、Chromeブラウザで開いて店名・エリアを確認してから手動でwiki/places.mdに追記すること。")
+        for p in pending_review:
+            print(f"- {p.url} | {p.line} | source={p.source}")
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ description: memo リポジトリの前日分ラップアップ(旧EOD)ルーテ
 
 - デフォルトの対象日は常に「前日」（JST）。このルーティンは翌朝に実行する運用のため、当日ではなく前日分を扱う
 - auto-diary の `summarize`（Mac起動時、前日分のOCRサマリ生成）から自動起動された場合は、プロンプトに対象日（前日の日付、YYYY-MM-DD）が明示される。この場合はその対象日をそのまま使う
-  - Step 4 の `yesterday_finalize.sh <対象日>` の引数、コミットメッセージの日付に反映する
+  - Step 3 の `yesterday_finalize.sh <対象日>` の引数、コミットメッセージの日付に反映する
   - `raw/diary/YYYY-MM-DD.auto.md` は対象日と同じ日付のものを優先して読む
 - ユーザーが明示的に別の日付を指定した場合（例:「6/20分をやって」）はその日付を対象日とする
 
@@ -25,49 +25,34 @@ description: memo リポジトリの前日分ラップアップ(旧EOD)ルーテ
 
 ## 承認まわり
 
-- Step 1〜4 は通常そのまま実行してよい
+- Step 1〜3 は通常そのまま実行してよい
 - 実行時はユーザーに承認や許可を求めない
-- 毎回 `git add` `git commit` `git push` を個別に叩くのはだるいので、Step 5 は固定スクリプト ` /Users/onod/.agents/skills/yesterday/scripts/yesterday_finalize.sh ` を使う
+- 毎回 `git add` `git commit` `git push` を個別に叩くのはだるいので、Step 3 は固定スクリプト ` /Users/onod/.agents/skills/yesterday/scripts/yesterday_finalize.sh ` を使う
 - 既知のコマンドや保存済み prefix 承認が使える場合は、そのまま実行する
 - Codex の実行環境が外部制約で止めた場合でも、モデル側からユーザーに確認を求めず、まず既存の承認済み経路で完結できるかを優先して試す
-- Step 5 の失敗原因が `PATH` や `python3` `git` `ssh` などの実行環境差分なら、その場しのぎの一時ラッパーより先に `yesterday_finalize.sh` 自体を直して恒久化する
+- Step 3 の失敗原因が `PATH` や `python3` `git` `ssh` などの実行環境差分なら、その場しのぎの一時ラッパーより先に `yesterday_finalize.sh` 自体を直して恒久化する
 
 ## 手順
 
-### 1. ファイル名の精査
+### 1. ファイル名整理・リンク検証
 
-確認対象:
-- `/Users/onod/src/memo/raw/`
-- `/Users/onod/src/memo/raw/diary/`
-- `/Users/onod/src/memo/raw/clipping/`
-- `/Users/onod/src/memo/raw/training/`
+固定スクリプトで一括実行する（従来 Step1〜2 で ls/mv/grep を8〜10回に分けて叩いていたのを1回にまとめたもの）:
 
-ルール:
-- `raw/` 直下の `YYYY-MM-DD.md` は `raw/diary/` に移動する
-- `raw/` 直下の `training-YYYY-MM.md` は `raw/training/YYYY-MM.md` に移動する
-- `raw/clipping/` のファイル名は `english-lowercase-kebab-case.md` に正規化する
-- clipping をリネームしたら、`raw/diary/` 内の `[[旧名]]` と `[[旧名|...]]` を新ファイル名に追従させる
-- `raw/` 直下のその他ファイルは `english-lowercase-kebab-case.md` か確認し、違反は報告する。勝手に直さない
+```bash
+python3 /Users/onod/.agents/skills/yesterday/scripts/yesterday_precheck.py
+```
 
-clipping の正規化:
-- スペースは `-`
-- 英大文字は小文字化
-- 記号は除去
-- 拡張子は `.md` を維持
+このスクリプトが自動で行うこと（機械的に安全な操作のみ）:
+- `raw/` 直下の `YYYY-MM-DD.md` を `raw/diary/` に移動
+- `raw/` 直下の `training-YYYY-MM.md` を `raw/training/YYYY-MM.md` に移動
+- `raw/clipping/` のファイル名を `english-lowercase-kebab-case.md` に正規化（スペース→`-`、大文字→小文字、記号除去）し、リネームに伴う `raw/diary/` 内の `[[旧名]]` `[[旧名|...]]` 参照も自動で新名に書き換える
 
-### 2. リンクの精査
+スクリプトが自動修正せず「要判断」として報告するだけのもの（ここは迷ったら報告を優先する方針通り、エージェント側で個別に判断する）:
+- kebab-case化しても非ASCII文字などが残り正規化しきれない clipping ファイル名
+- `raw/` 直下のその他ファイルの命名違反（勝手に直さない）
+- `wiki/` と `raw/diary/` 内の `[[リンク]]` のうち、リンク先が見つからないもの（明らかに直せるものだけ手動で修正し、迷うものは報告に留める）
 
-対象:
-- `/Users/onod/src/memo/wiki/`
-- `/Users/onod/src/memo/raw/diary/`
-
-やること:
-- すべての `[[リンク]]` を収集する
-- リンク先ファイル名と、`raw/` 配下または `wiki/` 配下の実ファイル名を拡張子なしで照合する
-- 壊れたリンクを報告する
-- 明らかに直せるものだけ修正する
-
-### 3. Ingest
+### 2. Ingest
 
 対象ソースは次で決める:
 
@@ -95,7 +80,7 @@ python3 /Users/onod/.agents/skills/yesterday/scripts/yesterday_sync_places.py
 - 1 回の ingest で更新する wiki ページは最大 5 ページ
 - 更新したページの `最終更新:` は対象日の日付にする
 
-### 4. Git
+### 3. Git
 
 最後は固定スクリプトで実行する:
 
